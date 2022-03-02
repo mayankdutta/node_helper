@@ -55,3 +55,42 @@ fs.readdir(`${__dirname}/files`, (err, files) => {
   );
 });
 ```
+
+### Files operation 
+
+```js
+const fs = require("fs");
+
+const fileName = "readme";
+const extension = "md";
+
+// creating new file
+fs.writeFileSync(`${__dirname}/${fileName}.${extension}`, "## Hello");
+
+// reading file data
+fs.readFile(`${__dirname}/${fileName}.${extension}`, "utf8", (err, data) => {
+  console.log(err ? err : data);
+});
+
+// modifying data
+fs.appendFileSync(
+  `${__dirname}/${fileName}.${extension}`,
+  ", how it's going",
+  "utf8",
+  (err) => {
+    console.log(err ? err : "successfull !!");
+  }
+);
+
+// renaming
+const newFileName = "README";
+fs.renameSync(
+  `${__dirname}/${fileName}.${extension}`,
+  `${__dirname}/${newFileName}.${extension}`,
+  () => {}
+);
+
+// deleting
+fs.unlinkSync(`${__dirname}/${newFileName}.${extension}`, () => {});
+
+```
