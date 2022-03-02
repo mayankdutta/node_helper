@@ -1,4 +1,4 @@
-### exploring fs
+### Exploring fs
 
 ```js
   const fs = require("fs");
@@ -27,7 +27,7 @@
   }
 ```
 
-### creating directory with files
+### Creating directory with files
 
 ```js
 const fs = require("fs");
@@ -39,4 +39,19 @@ for (let i = 0; i < 5; i++) {
   fs.writeFileSync(`${__dirname}/files/file${i}.txt`, "hello");
 }
 
+```
+
+
+### Reading the directory 
+
+```js
+fs.readdir(`${__dirname}/files`, (err, files) => {
+  console.log(
+    err
+      ? err
+      : files.forEach((file) => {
+          console.log(file);
+        })
+  );
+});
 ```
